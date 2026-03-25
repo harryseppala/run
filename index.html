@@ -2,189 +2,314 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>10-Week 10K Treadmill Training Plan</title>
+<title>10K Training Plans</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 16px;
+  line-height: 1.4;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #ccc;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 10px 14px;
+  cursor: pointer;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  white-space: nowrap;
+}
+
+.tab.active {
+  background: white;
+  font-weight: bold;
+}
+
+.content {
+  display: none;
+}
+
+.content.active {
+  display: block;
+}
+
+.week {
+  margin-top: 24px;
+}
+
+.current-week {
+  background: #e6f2ff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.week-dates {
+  font-size: 0.85em;
+  font-weight: normal;
+  color: #555;
+  margin-left: 6px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  vertical-align: top;
+  font-size: 0.9rem;
+}
+
+th:nth-child(1), th:nth-child(2), th:nth-child(3),
+td:nth-child(1), td:nth-child(2), td:nth-child(3) {
+  white-space: nowrap;
+}
+
+td:nth-child(4), th:nth-child(4) {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+th {
+  background: #f2f2f2;
+}
+
+@media (max-width: 600px) {
   body {
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-    margin: 40px;
-    color: #222;
-    background: #fff;
+    margin: 8px;
   }
-
-  h1 {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 0.2em;
-  }
-
-  h2 {
-    margin-top: 50px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid #ddd;
-  }
-
-  .subtitle {
-    text-align: center;
-    color: #666;
-    margin-bottom: 40px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 12px;
-    margin-bottom: 24px;
-    page-break-inside: avoid;
-  }
-
   th, td {
-    border: 1px solid #ccc;
-    padding: 10px 12px;
-    vertical-align: top;
+    font-size: 0.78rem;
+    padding: 5px 4px;
   }
-
-  th {
-    background: #f2f2f2;
-    text-align: left;
-    font-weight: 600;
-  }
-
-  .week {
-    page-break-before: always;
-  }
-
-  .week:first-of-type {
-    page-break-before: auto;
-  }
-
-  .note {
-    margin-top: 40px;
-    padding: 16px;
-    background: #f8f8f8;
-    border-left: 4px solid #aaa;
-  }
-
-  .legend {
-    margin-top: 24px;
-  }
-
-  .legend b {
-    display: inline-block;
-    width: 140px;
-  }
+}
 </style>
 </head>
 
 <body>
 
-<h1>10-Week 10K Treadmill Training Plan</h1>
-<div class="subtitle">Target race time: 1:05–1:10 &nbsp;•&nbsp; 3 runs per week</div>
+<h1>10K Training Plans</h1>
 
-<div class="week">
-<h2>Week 1 — Jan 12 – Jan 18</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>6.5 km</td><td>Max 8.0 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>5 km</td><td>Max 7.5 km/h</td></tr>
-<tr><td>Sun</td><td>Intervals</td><td>5 km</td><td>Warm-up 7 km/h<br>5 × 400 m @ 10–11 km/h, 60–90 s rest @ 7 km/h<br>Cool-down 7 km/h</td></tr>
-</table>
+<div class="tabs">
+  <div class="tab active" onclick="showTab(0)">New Plan (Faster)</div>
+  <div class="tab" onclick="showTab(1)">Original Plan</div>
 </div>
 
-<div class="week">
-<h2>Week 2 — Jan 19 – Jan 25</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>7.5 km</td><td>Max 8.0 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>6 km</td><td>Max 7.5–8.0 km/h</td></tr>
-<tr><td>Sun</td><td>Tempo</td><td>5.4 km</td><td>Warm-up 7 km/h<br>Tempo 9.0–9.5 km/h<br>Cool-down 7 km/h</td></tr>
-</table>
+<div class="content active" id="tab0">
+<h2>Follow-Up Plan (Faster 10K)</h2>
+<div id="new-plan"></div>
 </div>
 
-<div class="week">
-<h2>Week 3 — Jan 26 – Feb 1</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>9 km</td><td>Max 8.0 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>7 km</td><td>Max 7.5–8.0 km/h</td></tr>
-<tr><td>Sun</td><td>Intervals</td><td>6 km</td><td>Warm-up 7 km/h<br>5 × 400 m @ 10.5–11.5 km/h, rest @ 7 km/h<br>Cool-down 7 km/h</td></tr>
-</table>
+<div class="content" id="tab1">
+<h2>Original Plan</h2>
+<div id="old-plan"></div>
 </div>
 
-<div class="week">
-<h2>Week 4 — Recovery (Feb 2 – Feb 8)</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>6 km</td><td>Max 7.5 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>5.5 km</td><td>Max 7.5 km/h</td></tr>
-<tr><td>Sun</td><td>Time Trial</td><td>4.2 km</td><td>Max 9.5–10 km/h</td></tr>
-</table>
-</div>
+<script>
+function showTab(index) {
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    t.classList.toggle('active', i===index);
+  });
+  document.querySelectorAll('.content').forEach((c,i)=>{
+    c.classList.toggle('active', i===index);
+  });
+}
 
-<div class="week">
-<h2>Week 5 — Feb 9 – Feb 15</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>10 km</td><td>Max 8.0 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>7 km</td><td>Max 7.5–8.0 km/h</td></tr>
-<tr><td>Sun</td><td>Tempo</td><td>7.6 km</td><td>Warm-up 7 km/h<br>Tempo 9.0–9.5 km/h<br>Cool-down 7 km/h</td></tr>
-</table>
-</div>
+const startDate = new Date("2026-03-25");
 
-<div class="week">
-<h2>Week 6 — Feb 16 – Feb 22</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>12 km</td><td>Max 8.0 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>7.5 km</td><td>Max 7.5–8.0 km/h</td></tr>
-<tr><td>Sun</td><td>Intervals</td><td>7.5 km</td><td>Warm-up 7 km/h<br>6–8 × 500 m @ 10.5–11.5 km/h, rest @ 7 km/h<br>Cool-down 7 km/h</td></tr>
-</table>
-</div>
+function getCurrentWeek() {
+  const now = new Date();
+  const diff = Math.floor((now - startDate) / (1000*60*60*24*7));
+  return diff + 1;
+}
 
-<div class="week">
-<h2>Week 7 — Feb 23 – Mar 1</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>14 km</td><td>Max 8.0 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>7.5 km</td><td>Max 7.5–8.0 km/h</td></tr>
-<tr><td>Sun</td><td>Intervals</td><td>8 km</td><td>Warm-up 7 km/h<br>400–800 m @ 10.5–12.0 km/h, rest @ 7 km/h<br>Cool-down 7 km/h</td></tr>
-</table>
-</div>
+const currentWeek = getCurrentWeek();
 
-<div class="week">
-<h2>Week 8 — Mar 2 – Mar 8</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>13 km</td><td>Max 8.0 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>7 km</td><td>Max 7.5–8.0 km/h</td></tr>
-<tr><td>Sun</td><td>Tempo</td><td>6 km</td><td>Warm-up 7 km/h<br>Tempo 9.0–9.5 km/h<br>Cool-down 7 km/h</td></tr>
-</table>
-</div>
+function getISOWeekNumber(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const day = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+}
 
-<div class="week">
-<h2>Week 9 — Taper (Mar 9 – Mar 15)</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>Long Run</td><td>6 km</td><td>Max 7.5 km/h</td></tr>
-<tr><td>Fri</td><td>Easy Run</td><td>5.5 km</td><td>Max 7.5 km/h</td></tr>
-<tr><td>Sun</td><td>Taper Intervals</td><td>5.5 km</td><td>Warm-up 7 km/h<br>4 × 400 m @ 10.0–10.5 km/h, 90 s rest @ 7 km/h<br>Cool-down 7 km/h</td></tr>
-</table>
-</div>
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-<div class="week">
-<h2>Week 10 — Race (Mar 16 – Mar 22)</h2>
-<table>
-<tr><th>Day</th><th>Workout</th><th>Distance</th><th>Treadmill Speeds</th></tr>
-<tr><td>Wed</td><td>10K Race</td><td>10 km</td><td>Race pace 8.6–9.2 km/h</td></tr>
-</table>
-</div>
+function weekLabel(i) {
+  // Get the Monday of the week containing startDate + i*7
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + i * 7);
+  const dow = d.getDay();
+  const toMonday = (dow === 0) ? -6 : 1 - dow;
+  d.setDate(d.getDate() + toMonday);
+  const weekEnd = new Date(d);
+  weekEnd.setDate(weekEnd.getDate() + 6);
+  const wn = getISOWeekNumber(d);
+  const range = `${MONTHS[d.getMonth()]} ${d.getDate()} \u2013 ${MONTHS[weekEnd.getMonth()]} ${weekEnd.getDate()}`;
+  return `Week ${wn} <span class="week-dates">${range}</span>`;
+}
 
-<div class="note">
-<h3>Speed Legend</h3>
-<div class="legend"><b>Easy / Long:</b> Conversational pace</div>
-<div class="legend"><b>Tempo:</b> Comfortably hard, steady effort</div>
-<div class="legend"><b>Intervals:</b> Fast repeats with recovery</div>
-<div class="legend"><b>Taper:</b> Short, sharp, low-fatigue speed</div>
-</div>
+// -------- NEW PLAN (corrected speeds) --------
+const newPlan = [
+["Week 1", [
+["Wed","Long Run","8 km","Start 7.8 km/h → gradually increase to 8.4 km/h final 2 km"],
+["Fri","Easy Run","6 km","Stay relaxed 7.8–8.4 km/h, able to hold conversation"],
+["Sun","Intervals","6 km","Warm-up 7.5 km/h; 5×500 m at 11.0–11.8 km/h; 90s recovery 7.5 km/h; cooldown"]
+]],
+["Week 2", [
+["Wed","Long Run","9 km","Progressive 7.8 → 8.5 km/h, last km strongest"],
+["Fri","Easy Run","6 km","7.8–8.4 km/h steady"],
+["Sun","Tempo","6 km","Warm-up; 4 km at 9.8–10.2 km/h; cooldown"]
+]],
+["Week 3", [
+["Wed","Long Run","10 km","Hold 8.0–8.5 km/h comfortably"],
+["Fri","Easy Run","6 km","Keep under 8.5 km/h"],
+["Sun","Intervals","7 km","6×500 m at 11.2–12.2 km/h; recovery 7.5 km/h"]
+]],
+["Week 4", [
+["Wed","Long Run","8 km","Recovery pace 7.5–8.2 km/h"],
+["Fri","Easy Run","5 km","Very easy 7.5–8.0 km/h"],
+["Sun","Time Trial","5 km","Push steady 9.8–10.5 km/h"]
+]],
+["Week 5", [
+["Wed","Long Run","11 km","Progress 7.8 → 8.6 km/h"],
+["Fri","Easy Run","6 km","Relaxed 8.0 km/h"],
+["Sun","Tempo","7 km","5 km at 10.0–10.4 km/h"]
+]],
+["Week 6", [
+["Wed","Long Run","12 km","Steady 8.0–8.6 km/h (max cap)"],
+["Fri","Easy Run","6 km","7.8–8.4 km/h"],
+["Sun","Intervals","7 km","6×600 m at 11.5–12.5 km/h"]
+]],
+["Week 7", [
+["Wed","Long Run","12 km","Maintain 8.2–8.6 km/h"],
+["Fri","Easy Run","6 km","Very relaxed"],
+["Sun","Intervals","8 km","Mixed 400–800 m at 11.5–12.8 km/h"]
+]],
+["Week 8", [
+["Wed","Long Run","10 km","Step down 7.8–8.4 km/h"],
+["Fri","Easy Run","6 km","Easy"],
+["Sun","Tempo","6 km","4 km at 10.0–10.5 km/h"]
+]],
+["Week 9", [
+["Wed","Long Run","7 km","Very easy 7.5–8.0 km/h"],
+["Fri","Easy Run","5 km","Light jog"],
+["Sun","Taper Intervals","5 km","Warm-up; 4×400 m at 10.8–11.5 km/h; full recovery"]
+]],
+["Week 10", [
+["Wed","Race","10 km","Target 9.4–10.0 km/h (faster than previous)"]
+]]
+];
+
+// -------- OLD PLAN --------
+const oldPlan = [
+["Week 1", [
+["Wed","Long Run","6.5 km","Max 8.0 km/h"],
+["Fri","Easy Run","5 km","Max 7.5 km/h"],
+["Sun","Intervals","5 km","5×400 m intervals"]
+]],
+["Week 2", [
+["Wed","Long Run","7.5 km","Max 8.0 km/h"],
+["Fri","Easy Run","6 km","Max 7.5–8.0 km/h"],
+["Sun","Tempo","5.4 km","Tempo work"]
+]],
+["Week 3", [
+["Wed","Long Run","9 km","Max 8.0 km/h"],
+["Fri","Easy Run","7 km","Easy pace"],
+["Sun","Intervals","6 km","Intervals"]
+]],
+["Week 4", [
+["Wed","Long Run","6 km","Recovery pace"],
+["Fri","Easy Run","5.5 km","Easy"],
+["Sun","Time Trial","4.2 km","Hard effort"]
+]],
+["Week 5", [
+["Wed","Long Run","10 km","Max 8.0 km/h"],
+["Fri","Easy Run","7 km","Easy"],
+["Sun","Tempo","7.6 km","Tempo"]
+]],
+["Week 6", [
+["Wed","Long Run","12 km","Max 8.0 km/h"],
+["Fri","Easy Run","7.5 km","Easy"],
+["Sun","Intervals","7.5 km","Intervals"]
+]],
+["Week 7", [
+["Wed","Long Run","14 km","Max 8.0 km/h"],
+["Fri","Easy Run","7.5 km","Easy"],
+["Sun","Intervals","8 km","Intervals"]
+]],
+["Week 8", [
+["Wed","Long Run","13 km","Max 8.0 km/h"],
+["Fri","Easy Run","7 km","Easy"],
+["Sun","Tempo","6 km","Tempo"]
+]],
+["Week 9", [
+["Wed","Long Run","6 km","Easy"],
+["Fri","Easy Run","5.5 km","Easy"],
+["Sun","Taper Intervals","5.5 km","Light intervals"]
+]],
+["Week 10", [
+["Wed","Race","10 km","Race pace 8.6–9.2 km/h"]
+]]
+];
+
+// -------- RENDER --------
+function render(plan, containerId) {
+  const container = document.getElementById(containerId);
+
+  plan.forEach((week, i) => {
+    const isCurrent = (i+1 === currentWeek);
+
+    const div = document.createElement("div");
+    div.className = "week" + (isCurrent ? " current-week" : "");
+
+    let html = `<h3>${weekLabel(i)}</h3>
+    <table>
+    <tr><th>Day</th><th>Workout</th><th>Dist</th><th>Details</th></tr>`;
+
+    week[1].forEach(row=>{
+      html += `<tr>
+      <td>${row[0]}</td>
+      <td>${row[1]}</td>
+      <td>${row[2]}</td>
+      <td>${row[3]}</td>
+      </tr>`;
+    });
+
+    html += "</table>";
+    div.innerHTML = html;
+    container.appendChild(div);
+  });
+}
+
+render(newPlan, "new-plan");
+render(oldPlan, "old-plan");
+
+</script>
 
 </body>
 </html>
